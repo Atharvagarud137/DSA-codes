@@ -94,6 +94,7 @@ void inorder(struct abc* Root)
          return;
       inorder(Root->left);
       printf("%d ", Root->data);
+      printf("\n");
       inorder(Root->right);
 }
 
@@ -102,6 +103,7 @@ void preorder(struct abc* Root)
       if(Root==NULL)
          return;
       printf("%d ", Root->data);
+      printf("\n");
       preorder(Root->left);
       preorder(Root->right);
 }
@@ -113,6 +115,7 @@ void postorder(struct abc* Root)
       postorder(Root->left);
       postorder(Root->right);
       printf("%d ", Root->data);
+      printf("\n");
 }
 
 struct abc* search(struct abc* Root, int y)
@@ -146,7 +149,8 @@ void main()
           case 2:
                   printf("Enter a number to search in the binary tree:\n");
                   scanf("%d", &b);
-                  Root = search(Root, b);
+          
+        Root = search(Root, b);
                   break;
           case 3: 
                   printf("Enter a number to insert in the binary tree:\n");
