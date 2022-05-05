@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void prims(int, int [10][10]);
+// void prims(int, int [10][10]);
 
 void main()
 {
@@ -20,7 +20,7 @@ void main()
     for(int j=0; j<n; j++)
     {
       if(cost[i][j]==0)
-        cost[i][j]=999;
+              cost[i][j]=999;
 
     }
   } 
@@ -30,24 +30,24 @@ void main()
 void prims(int n, int cost[10][10])
 {
   int min_cost=0,min,e=1,u=1,v=1,visited[10];
-  for(int i=0; i<=n; i++)
+  for(int i=0; i<n; i++)
   {
     visited[i]=0;
   }
   visited[1]=1;
   while(e<n)
   {
-    for(int i=0; i<=n; i++)
+    for(int i=0; i<n; i++)
     {
       min=999;
-      for(int i=0; i<=n; i++)
+      for(int i=0; i<n; i++)
       {
-        for(int j=0; j<=n; j++)
+        for(int j=0; j<n; j++)
         {
           if(cost[i][j]<min)
           {
             if(visited[i]==0)
-               continue;
+                continue;
             else
             {
               min=cost[i][j];
@@ -65,8 +65,7 @@ void prims(int n, int cost[10][10])
         }
         cost[u][v]=cost[v][u]=999;
       }
-      printf("\nCost of the MST = %d\n", min_cost);
+     }
     }
-  }
+   printf("\nCost of the MST = %d\n",min_cost);
 }
-      
