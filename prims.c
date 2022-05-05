@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 void prims(int, int [10][10]);
 
@@ -21,9 +20,8 @@ void main()
     for(int j=0; j<n; j++)
     {
       if(cost[i][j]==0)
-      {
         cost[i][j]=999;
-      }
+
     }
   } 
   prims(n, cost);
@@ -41,28 +39,34 @@ void prims(int n, int cost[10][10])
   {
     for(int i=0; i<=n; i++)
     {
-      for(int j=0; j<=n; j++)
+      min=999;
+      for(int i=0; i<=n; i++)
       {
-         if(cost[i][j]<min)
-         {
-           if(visited[i]==0)
-              continue;
-           else
-           {
-             min=cost[i][j];
-             u=i;
-             v=j;
-           }
-         }   
+        for(int j=0; j<=n; j++)
+        {
+          if(cost[i][j]<min)
+          {
+            if(visited[i]==0)
+               continue;
+            else
+            {
+              min=cost[i][j];
+              u=i;
+              v=j;
+            }
+          }   
+        }
+        if(visited[u]==0 || visited[v]==0)
+        {
+          min_cost=min_cost+min;
+          printf("\n%d edge (%d, %d) and cost = %d\n",++e,u,v,min);
+          visited[v]=1;
+          printf("\n");
+        }
+        cost[u][v]=cost[v][u]=999;
       }
-      if(visited[u]==0 || visited[v]==0)
-      {
-        min_cost=min_cost+min;
-        printf("%d edge (%d, %d) and cost = %d",++e,u,v,min);
-        visited[v]=1;
-      }
-      cost[u][v]=cost[v][u]=999;
+      printf("\nCost of the MST = %d\n", min_cost);
     }
-    printf("Cost of the MST = %d\n", min_cost);
   }
-}      
+}
+      
